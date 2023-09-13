@@ -1,34 +1,35 @@
 //import React from 'react';  
 import "./about.css";
-import aboutImage from "../../images/aboutImage.png"
+import neo from "../../images/neo.jpg"
+
 
 function About () {  
     return (
-    <div className="aboutDiv">  
-        <section className="aboutSection">
-            <h1>About</h1>
-            <div>
-                <img className = "sidebarImg"
-                src={aboutImage}
-                alt=""
-                 />
-            </div>
-            <p>
-                <strong>
-                    Learning React is really fun, 
-                    but it takes patience and practice.
-                </strong>
+    <main className="main">
+        <h2>About</h2>
+        <section className="about">
+            <header className="aboutHeader">
+                <img className = "aboutImg" src={neo} alt="" />
+                <div aboutInfo>
+                    <h3>Peter Perez</h3>
+                    <p>Technical Project Manager</p>
+                </div>
+            </header>
+            <p className="aboutDesc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Modi laudantium atque quisquam, perferendis id maxime 
+                aliquam praesentium numquam ipsum debitis, eligendi 
+                aspernatur hic tempora ab. Quidem non exercitationem sit porro!
             </p>
             <p>
-                Learning React is really fun, 
-                but it takes patience and practice.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Nesciunt ab suscipit ducimus! Quod libero eligendi esse 
+                similique praesentium neque rem, assumenda rerum nesciunt 
+                alias voluptatem cum quo reprehenderit, voluptas sed.
             </p>
-            <section>
-                <h2>MongoDB</h2>
-                <h2>Express JS</h2>
-            </section>
         </section>
-    </div>
+        
+    </main>
     )
 }  
 export default About;  

@@ -1,9 +1,43 @@
-.aboutDiv {
-    background: linear-gradient(
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 0.5)
-    ),
-    url("../../images/aboutImage.png");
-    background-size: cover;
-    align-items: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+.main {
+    max-width: 1440px;
+    margin: 100px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+.about {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    margin-bottom: 10px;
+}
+
+.aboutHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .aboutImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #996ed9;
+    margin-right: 10px;
+  }
+
+  .aboutDesc {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
