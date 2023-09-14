@@ -10,7 +10,7 @@ function About () {
         <section className="about">
             <header className="aboutHeader">
                 <img className = "aboutImg" src={neo} alt="" />
-                <div aboutInfo>
+                <div className="aboutInfo">
                     <h3>Peter Perez</h3>
                     <p>Technical Project Manager</p>
                 </div>
@@ -29,6 +29,13 @@ function About () {
             </p>
         </section>
         
+        <section className="MERN">
+            <h3>MERN</h3>
+            <p>MongoDB</p>
+            <p>ExpressJS</p>
+            <p>ReactJS</p>
+            <p>NodeJS</p>
+        </section>
     </main>
     )
 }  

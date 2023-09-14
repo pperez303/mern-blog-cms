@@ -1,8 +1,9 @@
-import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import NavBar from './components/nav/NavBar';
 
 // Pages
 import About from "./pages/about/About";
+import Contact from './pages/contact/Contact';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path="/about" element={<About />} />
+        <Route exact path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import "./navbar.css";
 
 function NavBar() {
     console.log('NavBar displayed');
 
     return (
-        <header>
+        <header className="nav_header">
             <nav className="navCenter">
                 <ul className="navList">
                     <li className="navListItem">
