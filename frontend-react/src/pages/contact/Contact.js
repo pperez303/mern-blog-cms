@@ -12,16 +12,13 @@ function Contact () {
                 <img className = "contact_Img" src={neo} alt="" />
                 <div className="contact_Name">
                     <h3>Peter Perez</h3>
-                    <p>Technical Project Manager</p>
-                </div>
+                    <p>Technical Project Manager</p>                   
+                </div>                 
             </header>
-            <p className="contact_Email">
-               neodog@gmail.com
-            </p>
-            <p className="contact_Phone">
-                1-725-111-1111
-            </p>
-        </section>
+            <p className="contact_Email">neodog@gmail.com</p>
+            <p className="contact_Phone">1-725-111-1111</p>
+        </section> 
+
     </main>
     )
 }  
