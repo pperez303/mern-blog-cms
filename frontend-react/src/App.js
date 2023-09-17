@@ -7,7 +7,7 @@ import NavBar from './components/nav/NavBar';
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Contact from './pages/contact/Contact';
-import Single_Post from "./pages/single_post/Single_Post";
+import SinglePost from "./pages/single_post/SinglePost";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
-        <Route exact path="/post/:postId" element={<Single_Post />} />
+        <Route exact path="/post/:postId" element={<SinglePost />} />
       </Routes>
     </Router>
   );

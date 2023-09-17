@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   
-  // public path created in the /api/index.js
- const path = "http://localhost:8000/images/";
+  // PUBLIC PATH created in the /api/index.js
+ const path = "http://localhost:8000/api/images/";
  console.log(path)
 
   return (

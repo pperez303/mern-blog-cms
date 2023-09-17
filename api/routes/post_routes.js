@@ -1,8 +1,10 @@
-//const router = require("express").Router();
-import express from "express"
-import Post from "../mongoDB_models/PostModel.js";
-//const Post = require("../mongoDB_models/PostModel");
-const router = express.Router();
+//import express from "express"
+import { Router } from "express";
+import PostModel from "../mongoDB_models/PostModel.js";
+
+// Create a new router object to handle requests.
+const router = Router();
+
 //GET ALL POSTS
 router.get("/", async (req, res) => {
   const username = req.query.username;
@@ -11,7 +13,7 @@ router.get("/", async (req, res) => {
   try {
     let posts;
     if (username) {
-      posts = await Post.find({ username });
+      posts = await PostModel.find({ username });
     } else if (catName) {
       posts = await Post.find({
         categories: {
@@ -19,7 +21,7 @@ router.get("/", async (req, res) => {
         },
       });
     } else {
-      posts = await Post.find();
+      posts = await PostModel.find();
     }
     res.status(200).json(posts);
   } catch (err) {
@@ -30,12 +32,11 @@ router.get("/", async (req, res) => {
 //GET POST
 router.get("/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await PostModel.findById(req.params.id);
     res.status(200).json(post);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// module.exports = router;
 export default router;
