@@ -1,4 +1,4 @@
-import "./post.css";
+import "./postcontent.css";
 import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
@@ -16,9 +16,12 @@ export default function Post({ post }) {
             <span className="postCat">{c.name}</span>
           ))}
           </div> */}
+
+        {/* Link to view the single_post_view.  /Route defined in App.js */}
         <Link to={`/post/${post._id}`} className="link">
           <span className="postTitle">{post.title}</span>
         </Link>
+
         <hr />
         <span className="postDate">
           {new Date(post.createdAt).toDateString()}
