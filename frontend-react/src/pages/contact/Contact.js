@@ -1,15 +1,15 @@
 import "./contact.css";
-import neo from "../../images/neo.jpg"
+import neo from "../../assets/images/neo.jpg"
 
 // Components
-import Sidebar from "../../components/sidebar/Sidebar";
-import Header from "../../components/header/Header";
+import Sidebar from "../../components/common/sidebar/Sidebar";
+import Header from "../../components/common/header/Header";
 
 function Contact () {  
     return (
     <>
         <Header />
-        <main className="main">
+        <main className="wrapper">
             <div className="contactsection">
                 <h2>Contact me</h2>
                 <section className="contact">

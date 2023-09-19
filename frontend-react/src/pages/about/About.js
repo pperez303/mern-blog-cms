@@ -1,16 +1,16 @@
 //import React from 'react';  
 import "./about.css";
-import neo from "../../images/neo.jpg"
+import neo from "../../assets/images/neo.jpg"
 
 //components
-import Sidebar from "../../components/sidebar/Sidebar";
-import Header from "../../components/header/Header";
+import Sidebar from "../../components/common/sidebar/Sidebar";
+import Header from "../../components/common/header/Header";
 
 function About () {  
     return (
     <>
         <Header />
-        <main className="main">            
+        <main className="wrapper">            
             <div className="aboutsection">
                 <h2>About</h2>
                 <section className="about">
@@ -43,7 +43,7 @@ function About () {
                     <p>NodeJS</p>
                 </section>
             </div>
-            <Sidebar className="sidesection"/>
+            <Sidebar className="sidebar"/>
         </main>
     </>
     )

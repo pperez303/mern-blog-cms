@@ -1,5 +1,5 @@
 import React from "react"
-import headerImage from "../../images/neo.jpg"
+import headerImage from "../../../assets/images/neo.jpg"
 import "./header.css"
 
 export default function Header() {

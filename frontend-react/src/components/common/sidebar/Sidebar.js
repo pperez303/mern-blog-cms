@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
-import sbimage from "../../images/neo.jpg"
+import sbimage from "../../../assets/images/neo.jpg"
 
 function Sidebar() {
   const [cats, setCats] = useState([]);

@@ -4,9 +4,11 @@ import { useLocation } from "react-router";
 import "./home.css";
 
 // Components
-import Header from "../../components/header/Header";
-import Posts from "../../components/posts/Posts";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Header from "../../components/common/header/Header";
+import Sidebar from "../../components/common/sidebar/Sidebar";
+
+import Posts from "../../components/content/posts/Posts";
+
 
 function Home() {
   // Setup the useState with an empty array
