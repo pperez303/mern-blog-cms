@@ -5,7 +5,6 @@ import "./home.css";
 
 // Components
 import Header from "../../components/common/header/Header";
-import Sidebar from "../../components/common/sidebar/Sidebar";
 
 import Posts from "../../components/content/posts/Posts";
 
@@ -33,7 +32,6 @@ function Home() {
       <Header />
       <div className="home">
         <Posts posts={posts} />
-        <Sidebar />
       </div>
     </>
   );
