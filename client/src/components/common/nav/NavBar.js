@@ -43,7 +43,7 @@ function NavBar() {
             <div className="topRight">
                 {user ? 
                     (
-                        <Link to="/settings">
+                        <Link to="/profile">
                             <img className="topImg" src={PublicFolder+user.profilePic} alt="" />
                         </Link>
                     ):

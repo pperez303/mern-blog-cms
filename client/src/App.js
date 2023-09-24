@@ -9,6 +9,7 @@ import { Context } from "./context/Context";
 import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import Profile from "./pages/profile/Profile";
 import SinglePostView from "./pages/single_post_view/SinglePostView";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/register" element={user ? <Home /> : <Register />}  />
         <Route exact path="/login" element={user ? <Home /> : <Login />} />
         <Route exact path="/post/:postId" element={<SinglePostView />} />
+        <Route exact path="/profile" element={user ? <Profile /> : <Register />}  />
       </Routes>
     </Router>
   );
