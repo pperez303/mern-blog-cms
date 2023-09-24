@@ -18,14 +18,16 @@ export default function Profile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('at profile handleSubmit')
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
-      userId: user._id,
+      _id: user._id,
       username,
       email,
       password,
     };
     if (file) {
+      console.log('Profile if (file true', file)
       const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
