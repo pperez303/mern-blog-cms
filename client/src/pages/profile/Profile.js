@@ -6,13 +6,18 @@ import axios from "axios";
 
 export default function Profile() {
   const [file, setFile] = useState(null);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
 
   // Define the context consumer
   const { user, dispatch } = useContext(Context);
+
+  // initialize the profile properties
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
+
+
+  console.log('document values initialized')
   
   const publicFolder = "http://localhost:8000/api/images/"
 
