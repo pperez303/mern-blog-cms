@@ -11,6 +11,7 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import SinglePostView from "./pages/single_post_view/SinglePostView";
+import Write from "./pages/write/Write";
 
 function App() {
   
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/login" element={user ? <Home /> : <Login />} />
         <Route exact path="/post/:postId" element={<SinglePostView />} />
         <Route exact path="/profile" element={user ? <Profile /> : <Register />}  />
+        <Route exact path="/write" element={user ? <Write /> : <Register />} />
       </Routes>
     </Router>
   );

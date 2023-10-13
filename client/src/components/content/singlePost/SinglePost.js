@@ -6,11 +6,17 @@ import { Link } from "react-router-dom";
 import { Context } from "../../../context/Context";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-//import {ImageResize } from '@ckeditor/ckeditor5-image/src/imageresize';
+//import {ImageResizeEditing} from '@ckeditor/ckeditor5-build-classic';
+//import { ImageResizeHandles } from '@ckeditor/ckeditor5-build-classic';
+//import { Image } from '@ckeditor/ckeditor5-build-classic';
+//import { ImageStyle } from '@ckeditor/ckeditor5-build-classic';
+import { ImageResize } from '@ckeditor/ckeditor5-build-classic';
 
-import parse from "react-html-parser";
+import parse from "html-react-parser";
 import "./singlepost.css";
+import "./content-styles.css";
 import "@ckeditor/ckeditor5-theme-lark"
+import {Animation1} from "../../../assets/animations/animation1/Animation1";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -31,7 +37,7 @@ export default function SinglePost() {
       setTitle(res.data.title);
       setDesc(res.data.desc);
       //setPostBody(res.data.postbody);
-      //console.log(res)
+      console.log('postbody: ', res.data.postbody)
       // test postbody-----------------------------------------
       setPostBody(res.data.postbody)
       // test postbody------------------------------------------
@@ -62,10 +68,10 @@ export default function SinglePost() {
     } catch (err) {}
   };
 
-  const editChange = (e, editor) => {
-    const data = editor.getData()
-     setPostBody(data)
-  };
+  // const editChange = (e, editor) => {
+  //   const data = editor.getData()
+  //    setPostBody(data)
+  // };
 
   const handleCKeditorState = (e, editor) => {
     const data = editor.getData();
@@ -76,10 +82,10 @@ export default function SinglePost() {
 
   return (
     <div className="singlePost">
-      <div className="singlePostWrapper">
-        {post.photo && (
-          <img src={PF + post.photo} alt="" className="singlePostImg" />
-        )}
+      <div className="singlePostWrapper">    {/** add ck-content to manage the ckeditor css classes */}
+      {console.log('PublicFolder PF: ', PF)}
+      {console.log('Post Photo: ', post.photo)}
+       {post.photo ? <img src={PF + post.photo} alt="" className="singlePostImg" /> : <Animation1 />}
         {updateMode ? (
           <input
             type="text"
@@ -128,7 +134,7 @@ export default function SinglePost() {
         )}
 
         {updateMode ? (
-          <div className="ckeditor">
+          <div className="ckeditor">             
             <label>Content</label>
               <CKEditor
                 editor={ClassicEditor}
@@ -137,8 +143,17 @@ export default function SinglePost() {
                 }}
                 data={postbody}
                 config={{
+                  image: {
+                    toolbar: [
+                      'imageStyle:inline',
+                      'imageStyle:block',
+                      'imageStyle:side',
+                      '|',
+                      'toggleImageCaption'
+                    ]
+                  },
                   ckfinder: { uploadUrl: "http://localhost:8000/api/ckloads/uploads" },
-                  types: ['png', 'jpeg']
+                  types: ['png', 'jpeg'],
                 }}
                 onChange={handleCKeditorState}
                 // onChange={editChange}
@@ -151,7 +166,7 @@ export default function SinglePost() {
           // />
         ) : (
           //<p className="singlePostBody">{postbody}</p>
-          <div>
+         <div className="ck-content">                                           {/** applies to the contetn-styles.css */}
             <br />
             {parse(postbody)}  
           </div>
