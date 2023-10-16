@@ -16,7 +16,7 @@ import parse from "html-react-parser";
 import "./singlepost.css";
 import "./content-styles.css";
 import "@ckeditor/ckeditor5-theme-lark"
-import {Animation1} from "../../../assets/animations/animation1/Animation1";
+//import {Animation1} from "../../../assets/animations/animation1/Animation1";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -47,7 +47,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/${post._id}`, {
+      await axios.delete(`/api/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -85,7 +85,7 @@ export default function SinglePost() {
       <div className="singlePostWrapper">    {/** add ck-content to manage the ckeditor css classes */}
       {console.log('PublicFolder PF: ', PF)}
       {console.log('Post Photo: ', post.photo)}
-       {post.photo ? <img src={PF + post.photo} alt="" className="singlePostImg" /> : <Animation1 />}
+       {post.photo && <img src={PF + post.photo} alt="" className="singlePostImg" />}
         {updateMode ? (
           <input
             type="text"
