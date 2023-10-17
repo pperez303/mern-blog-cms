@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./login.css";
 
+// If a user can't remember their password, then 1) delete the user record in MongoDB and 2) have the user register with the same User Name.
 export default function Login() {
 
   // Setup hooks to save the username and passwed entered on the form <input> tags

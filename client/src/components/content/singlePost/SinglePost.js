@@ -10,7 +10,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 //import { ImageResizeHandles } from '@ckeditor/ckeditor5-build-classic';
 //import { Image } from '@ckeditor/ckeditor5-build-classic';
 //import { ImageStyle } from '@ckeditor/ckeditor5-build-classic';
-import { ImageResize } from '@ckeditor/ckeditor5-build-classic';
+//import { ImageResize } from '@ckeditor/ckeditor5-build-classic';
 
 import parse from "html-react-parser";
 import "./singlepost.css";

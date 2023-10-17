@@ -15,6 +15,7 @@ export default function Profile() {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
+  console.log('user password: ', user.password)
 
 
   console.log('document values initialized')
