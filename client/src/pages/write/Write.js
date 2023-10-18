@@ -19,6 +19,8 @@ export default function Write() {
       postbody: "",
       // test postbody
     };
+
+    // Upload the image file if not null
     if (file) {
       const data =new FormData();
       const filename = Date.now() + file.name;

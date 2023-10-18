@@ -1,12 +1,14 @@
 //
 import axios from "axios";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./login.css";
 
 // If a user can't remember their password, then 1) delete the user record in MongoDB and 2) have the user register with the same User Name.
 export default function Login() {
+
+  const [error, setError] = useState(false);
 
   // Setup hooks to save the username and passwed entered on the form <input> tags
   const userRef = useRef();
@@ -19,6 +21,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(false);
     dispatch({ type: "LOGIN_START" });                    // call the dispatch() function in the Context object.
     try {
       const res = await axios.post("/api/auth/login", {
@@ -28,6 +31,7 @@ export default function Login() {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       
     } catch (err) {
+      setError(true);
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
@@ -62,6 +66,7 @@ export default function Login() {
           Register
         </Link>
       </button>
+      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong! Probably a bad password.</span>}
     </div>
   );
 }

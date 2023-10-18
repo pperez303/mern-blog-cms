@@ -45,7 +45,7 @@ export default function SinglePost() {
     getPost();
   }, [path]);
 
-  const handleDelete = async () => {
+  const handleDelete = async () => {                                      // add code to remove image, if not null, from the the local image store.
     try {
       await axios.delete(`/api/posts/${post._id}`, {
         data: { username: user.username },
