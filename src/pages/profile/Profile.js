@@ -21,7 +21,8 @@ export default function Profile() {
 
   console.log('document values initialized')
   
-  const publicFolder = "http://localhost:8000/api/images/"
+  //const publicFolder = "http://localhost:8000/api/images/"
+  const publicFolder = process.env.REACT_APP_PROXY + "/api/images/"
 
   // Receive the form data if the validation is successfull
   const handleSubmit = async (e) => {
@@ -44,13 +45,13 @@ export default function Profile() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("/api/upload", data);
+        await axios.post(process.env.REACT_APP_PROXY + "/api/upload", data);
       } catch (err) {
         setError(true)
       }
     }
     try {
-      const res = await axios.put("/api/users/" + user._id, updatedUser);
+      const res = await axios.put(process.env.REACT_APP_PROXY + "/api/users/" + user._id, updatedUser);
       setSuccess(true);
       console.log("UPDATE SUCCESS")
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });

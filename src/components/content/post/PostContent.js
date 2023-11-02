@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Post({ post }) {
   
   // PUBLIC PATH created in the /api/index.js
- const path = "http://localhost:8000/api/images/";
+ const path =process.env.REACT_APP_PROXY + "/api/images/";
  console.log(path)
 
   return (

@@ -15,7 +15,7 @@ function Home() {
 
   // Deconstruct and return the 'search' property from useLocation like "?user=pedro"
   const { search } = useLocation();
-  console.log("PROXY = ", process.env.PROXY)
+  console.log("PROXY = ", process.env.REACT_APP_PROXY)
 
   // Fetch the posts.  If the { search } is empty, then fetch all the Posts, Else fetch a single Post based on the property.
   useEffect(() => {

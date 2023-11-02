@@ -22,8 +22,8 @@ export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "http://localhost:8000/api/images/";
-  const { user } = useContext(Context);
+  const PF = process.env.REACT_APP_PROXY + "/api/images/";
+  const { user } = useContext(Context)
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   
@@ -32,7 +32,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/api/posts/" + path);
+      const res = await axios.get(process.env.REACT_APP_PROXY + "/api/posts/" + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -47,7 +47,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {                                      // add code to remove image, if not null, from the the local image store.
     try {
-      await axios.delete(`/api/posts/${post._id}`, {
+      await axios.delete(process.env.REACT_APP_PROXY + `/api/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -56,7 +56,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`/api/posts/${post._id}`, {
+      await axios.put(process.env.REACT_APP_PROXY + `/api/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
@@ -152,7 +152,7 @@ export default function SinglePost() {
                       'toggleImageCaption'
                     ]
                   },
-                  ckfinder: { uploadUrl: "http://localhost:8000/api/ckloads/uploads" },
+                  ckfinder: { uploadUrl: process.env.REACT_APP_PROXY + "/api/ckloads/uploads" },
                   types: ['png', 'jpeg'],
                 }}
                 onChange={handleCKeditorState}

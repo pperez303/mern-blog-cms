@@ -12,7 +12,7 @@ function NavBar() {
     const { user, dispatch } = useContext(Context);
     console.log('at Navbar user: ', user)
 
-    const PublicFolder = "http://localhost:8000/api/images/"
+    const PublicFolder = process.env.REACT_APP_PROXY + "/api/images/"
    
     const handleLogout = () => {
         console.log('At the handleLogout funct')
