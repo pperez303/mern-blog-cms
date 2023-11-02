@@ -15,11 +15,12 @@ function Home() {
 
   // Deconstruct and return the 'search' property from useLocation like "?user=pedro"
   const { search } = useLocation();
+  console.log("PROXY = ", process.env.PROXY)
 
   // Fetch the posts.  If the { search } is empty, then fetch all the Posts, Else fetch a single Post based on the property.
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/api/posts/" + search);     // references /api
+      const res = await axios.get(process.env.REACT_APP_PROXY + "/api/posts/" + search);     // references /api
       console.log('useEffect')
       console.log(res);
       setPosts(res.data);
