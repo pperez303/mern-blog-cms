@@ -29,4 +29,5 @@ jobs:
     - run: npm i
     - run: npm run build --if-present
     - run: echo "${{ secrets.DROPLET1 }}" | sudo -S rm -R /var/www/cmsbuild/build
-    - run: echo "${{ secrets.DROPLET1 }}" | sudo -S mv /home/ipeteperez/backend-apps/mern-blog-cms-runner/react-app/mern-blog-cms/mern-blog-cms/build /var/www/cmsbuild
+    - run: echo "${{ secrets.DROPLET1 }}" | sudo -S mv /home/ipeteperez/frontend-apps/mern-blog-cms-runner/react-app/mern-blog-cms/mern-blog-cms/build /var/www/cmsbuild
+                                                    
