@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: echo "${{ variables.API_PROXY }}" > .env
     - run: npm i
     - run: npm run build --if-present
     - run: echo "${{ secrets.DROPLET1 }}" | sudo -S rm -R /var/www/cmsbuild/build
