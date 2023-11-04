@@ -29,7 +29,7 @@ function NavBar() {
                         </Link>
                     </li>
                     <li className="navListItem">
-                        <Link className="link" to="/write">
+                        <Link className="link" to="/cms/write">
                         WRITE
                         </Link>
                     </li>
@@ -43,19 +43,19 @@ function NavBar() {
             <div className="topRight">
                 {user ? 
                     (
-                        <Link to="/profile">
+                        <Link to="/cms/profile">
                             <img className="topImg" src={PublicFolder+user.profilePic} alt="" />
                         </Link>
                     ):
                     (
                         <ul className="topList">
                             <li className="topListItem">
-                                <Link className="link" to="/login">
+                                <Link className="link" to="/cms/login">
                                     LOGIN
                                 </Link>
                             </li>
                             <li className="topListItem">
-                                <Link className="link" to="/register">
+                                <Link className="link" to="/cms/register">
                                     REGISTER
                                 </Link>
                             </li>

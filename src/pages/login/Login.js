@@ -62,7 +62,7 @@ export default function Login() {
         </button>
       </form>
       <button className="loginRegisterButton">
-        <Link className="link" to="/register">
+        <Link className="link" to="/cms/register">
           Register
         </Link>
       </button>

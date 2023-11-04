@@ -18,7 +18,7 @@ export default function Post({ post }) {
           </div> */}
 
         {/* Link to view the single_post_view.  /Route defined in App.js */}
-        <Link to={`/post/${post._id}`} className="link">
+        <Link to={`/cms/post/${post._id}`} className="link">
           <span className="postTitle">{post.title}</span>
         </Link>
 

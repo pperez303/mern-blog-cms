@@ -33,7 +33,7 @@ export default function Write() {
     }
     try {
       const res = await axios.post(process.env.REACT_APP_PROXY + "/api/posts", newPost);
-      window.location.replace("/post/" + res.data._id);
+      window.location.replace("/cms/post/" + res.data._id);
     } catch (err) {}
   };
   return (

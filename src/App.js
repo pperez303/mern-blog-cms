@@ -25,11 +25,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path="/cms/" element={<Home />} />
-        <Route exact path="/register" element={user ? <Home /> : <Register />}  />
-        <Route exact path="/login" element={user ? <Home /> : <Login />} />
-        <Route exact path="/post/:postId" element={<SinglePostView />} />
-        <Route exact path="/profile" element={user ? <Profile /> : <Register />}  />
-        <Route exact path="/write" element={user ? <Write /> : <Register />} />
+        <Route exact path="/cms/register" element={user ? <Home /> : <Register />}  />
+        <Route exact path="/cms/login" element={user ? <Home /> : <Login />} />
+        <Route exact path="/cms/post/:postId" element={<SinglePostView />} />
+        <Route exact path="/cms/profile" element={user ? <Profile /> : <Register />}  />
+        <Route exact path="/cms/write" element={user ? <Write /> : <Register />} />
       </Routes>
     </Router>
   );
