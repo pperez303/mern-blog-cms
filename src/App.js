@@ -24,7 +24,7 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/cms/" element={<Home />} />
         <Route exact path="/register" element={user ? <Home /> : <Register />}  />
         <Route exact path="/login" element={user ? <Home /> : <Login />} />
         <Route exact path="/post/:postId" element={<SinglePostView />} />
