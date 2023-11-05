@@ -57,7 +57,7 @@ export default function Register() {
           Login
         </Link>
       </button>
-      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong! The Username may not be not be available.</span>}
+      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong! The Username and email must be unique.</span>}
     </div>
   );
 }
