@@ -20,7 +20,7 @@ import "@ckeditor/ckeditor5-theme-lark"
 
 export default function SinglePost() {
   const location = useLocation();
-  const path = location.pathname.split("/")[2];
+  const path = location.pathname.split("/cms/")[2];
   const [post, setPost] = useState({});
   const PF = process.env.REACT_APP_PROXY + "/api/images/";
   const { user } = useContext(Context)
@@ -50,7 +50,7 @@ export default function SinglePost() {
       await axios.delete(process.env.REACT_APP_PROXY + `/api/posts/${post._id}`, {
         data: { username: user.username },
       });
-      window.location.replace("/");
+      window.location.replace("/cms/");
     } catch (err) {}
   };
 
