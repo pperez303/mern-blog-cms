@@ -20,7 +20,7 @@ import "@ckeditor/ckeditor5-theme-lark"
 
 export default function SinglePost() {
   const location = useLocation();
-  const path = location.pathname.split("/")[2];
+  const path = location.pathname.split("/")[3];                   // select the post id value 
   const [post, setPost] = useState({});
   const PF = process.env.REACT_APP_PROXY + "/api/images/";
   const { user } = useContext(Context)
