@@ -5,17 +5,14 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Context } from "../../../context/Context";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-//import {ImageResizeEditing} from '@ckeditor/ckeditor5-build-classic';
-//import { ImageResizeHandles } from '@ckeditor/ckeditor5-build-classic';
-//import { Image } from '@ckeditor/ckeditor5-build-classic';
-//import { ImageStyle } from '@ckeditor/ckeditor5-build-classic';
-//import { ImageResize } from '@ckeditor/ckeditor5-build-classic';
+//import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from 'ckeditor5-custom-build'
+
 
 import parse from "html-react-parser";
 import "./singlepost.css";
 import "./content-styles.css";
-import "@ckeditor/ckeditor5-theme-lark"
+//import "@ckeditor/ckeditor5-theme-lark"
 //import {Animation1} from "../../../assets/animations/animation1/Animation1";
 
 export default function SinglePost() {
