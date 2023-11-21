@@ -19,6 +19,7 @@ export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[3];                   // select the post id value 
   const [post, setPost] = useState({});
+  console.log('FROM SinglePost REACT_APP Proxy= ', process.env.REACT_APP_PROXY)
   const PF = process.env.REACT_APP_PROXY + "/api/images/";
   const { user } = useContext(Context)
   const [title, setTitle] = useState("");
