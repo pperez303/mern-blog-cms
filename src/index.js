@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import { ContextProvider } from "./context/Context";
 
-// using github workflow ci/cd
+// using github workflow ci/cd - automated
 
 ReactDOM.render(
   <React.StrictMode>
