@@ -24,6 +24,7 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/cms/" element={<Home />} />
         <Route exact path="/cms/register" element={user ? <Home /> : <Register />}  />
         <Route exact path="/cms/login" element={user ? <Home /> : <Login />} />
