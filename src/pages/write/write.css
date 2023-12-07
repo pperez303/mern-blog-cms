@@ -32,11 +32,13 @@
     color: rgb(121, 118, 118);
     cursor: pointer;
   }
-  
-  .writeInput {
-    font-size: 30px;
-    border: none;
-    padding: 20px;
+
+  .articleHeader,
+  .articleSubHeader,
+  .moduleNumber,
+  .articleTitle {
+    font-size: 18px;
+    padding: 10px;
     width: 70vw;
   }
   
@@ -46,6 +48,8 @@
   
   .writeText {
     font-size: 20px;
+    padding: 20px;
+    width: 70vw;
     height: 100vh;
   }
   

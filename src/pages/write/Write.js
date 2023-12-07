@@ -4,6 +4,9 @@ import axios from "axios";
 import { Context } from "../../context/Context";
 
 export default function Write() {
+  const [articleheader, setArticleHeader] = useState("");
+  const [articlesubheader, setArticleSubHeader] = useState("");
+  const [modulenumber, setModuleNumber] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
@@ -13,13 +16,13 @@ export default function Write() {
     e.preventDefault();
     const newPost = {
       username: user.username,
+      articleheader,
+      articlesubheader,
+      modulenumber,
       title,
       desc,
-      // test postbody
       postbody: "",
-      // test postbody
     };
-
     // Upload the image file if not null
     if (file) {
       const data =new FormData();
@@ -31,7 +34,9 @@ export default function Write() {
         await axios.post(process.env.REACT_APP_PROXY + "/api/upload", data);
       } catch (err) {}
     }
+
     try {
+      console.log("HELLO IM HERE")
       const res = await axios.post(process.env.REACT_APP_PROXY + "/api/posts", newPost);
       window.location.replace("/cms/post/" + res.data._id);
     } catch (err) {}
@@ -43,19 +48,52 @@ export default function Write() {
       )}
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
-          <label htmlFor="fileInput">
-            <i className="writeIcon fas fa-plus"></i>
-          </label>
+          <span>
+            <label htmlFor="fileInput">
+              <i className="writeIcon fas fa-plus"></i>
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }}
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </span>
+          <span> &nbsp; Click the plus symble to get an image file</span>
+
+        </div>
+        <div className="writeFormGroup">
           <input
-            type="file"
-            id="fileInput"
-            style={{ display: "none" }}
-            onChange={(e) => setFile(e.target.files[0])}
+            type="text"
+            placeholder="Article Header"
+            className="articleHeader"
+            autoFocus={true}
+            onChange={e=>setArticleHeader(e.target.value)}
           />
+        </div>
+        <div className="writeFormGroup">
+          <input
+            type="text"
+            placeholder="Article Sub Header"
+            className="articleSubHeader"
+            autoFocus={true}
+            onChange={e=>setArticleSubHeader(e.target.value)}
+          />
+        </div>
+        <div className="writeFormGroup">
+          <input
+            type="text"
+            placeholder="Module Number"
+            className="moduleNumber"
+            autoFocus={true}
+            onChange={e=>setModuleNumber(e.target.value)}
+          />
+        </div>
+        <div className="writeFormGroup">
           <input
             type="text"
             placeholder="Title"
-            className="writeInput"
+            className="articleTitle"
             autoFocus={true}
             onChange={e=>setTitle(e.target.value)}
           />
@@ -64,7 +102,7 @@ export default function Write() {
           <textarea
             placeholder="Tell your story..."
             type="text"
-            className="writeInput writeText"
+            className="writeText"
             onChange={e=>setDesc(e.target.value)}
           ></textarea>
           <div>
