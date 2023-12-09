@@ -60,8 +60,8 @@ export default function Write() {
             />
           </span>
           <span> &nbsp; Click the plus symble to get an image file</span>
-
         </div>
+        
         <div className="writeFormGroup">
           <input
             type="text"

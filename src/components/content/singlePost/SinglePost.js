@@ -18,27 +18,44 @@ import "./content-styles.css";
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[3];                   // select the post id value 
-  const [post, setPost] = useState({});
+  
   console.log('FROM SinglePost REACT_APP Proxy= ', process.env.REACT_APP_PROXY)
-  const PF = process.env.REACT_APP_PROXY + "/api/images/";
+
+  const PF = process.env.REACT_APP_PROXY + "/api/images/";      // set the public folder
+
   const { user } = useContext(Context)
+  const [post, setPost] = useState({});
+  const [file, setImageFile] = useState("");
+
+  const [articleheader, setArticleHeader] = useState("");
+  const [articlesubheader, setArticleSubHeader] = useState("");
+  const [modulenumber, setModuleNumber] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   
   const [postbody, setPostBody] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
+  const [photo, setPhoto] = useState(false);
+
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get(process.env.REACT_APP_PROXY + "/api/posts/" + path);
       setPost(res.data);
+      console.log("OLD IMAGE is ", res.data.photo)
+
+      setArticleHeader(res.data.articleheader);
+      setArticleSubHeader(res.data.articlesubheader);
+      setModuleNumber(res.data.modulenumber);
+
       setTitle(res.data.title);
       setDesc(res.data.desc);
-      //setPostBody(res.data.postbody);
       console.log('postbody: ', res.data.postbody)
-      // test postbody-----------------------------------------
+  
       setPostBody(res.data.postbody)
-      // test postbody------------------------------------------
+
+      setPhoto(res.data.photo)
+
     };
     getPost();
   }, [path]);
@@ -53,17 +70,47 @@ export default function SinglePost() {
   };
 
   const handleUpdate = async () => {
+    const updatePost = {
+      username: user.username,
+      articleheader,
+      articlesubheader,
+      modulenumber,
+      title,
+      desc,
+      postbody
+    }
+    
+    if (file) {
+      
+      const data =new FormData();
+      const filename = Date.now() + file.name;
+
+      data.append("name", filename);
+      data.append("file", file);
+      updatePost.photo = filename;      
+      console.log("At before try", data)
+
+      // Upload the new image
+      try {
+        await axios.post(process.env.REACT_APP_PROXY + "/api/upload", data);
+      } catch (err) {}
+
+      // Remove the old image
+      try {
+        const oldimage = {image: photo}
+        console.log('OLDIMAGE =', oldimage)
+        await axios.post(process.env.REACT_APP_PROXY + "/api/removeoldimage/", oldimage);
+      } catch (err) {}
+    }
+
     try {
-      await axios.put(process.env.REACT_APP_PROXY + `/api/posts/${post._id}`, {
-        username: user.username,
-        title,
-        desc,
-        // test postbody
-        postbody
-        // test postbody
-      });
+      console.log("updatePost= ", updatePost)
+      await axios.put(process.env.REACT_APP_PROXY + `/api/posts/${post._id}`, updatePost);
       setUpdateMode(false)
     } catch (err) {}
+
+    
+    
   };
 
   // const editChange = (e, editor) => {
@@ -84,14 +131,70 @@ export default function SinglePost() {
       {console.log('PublicFolder PF: ', PF)}
       {console.log('Post Photo: ', post.photo)}
        {post.photo && <img src={PF + post.photo} alt="" className="singlePostImg" />}
+
+
         {updateMode ? (
-          <input
-            type="text"
-            value={title}
-            className="singlePostTitleInput"
-            autoFocus
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          
+          <div>
+          <div className="writeFormGroup">
+          <span>
+            <label htmlFor="fileInput">
+              <i className="writeIcon fas fa-plus"></i>
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }}
+              onChange={(e) => setImageFile(e.target.files[0])}
+            />
+          </span>
+          <span> &nbsp; Click the plus symble to get an image file</span>
+        </div>
+
+            <div>
+              <label>Article Header</label>
+              <input
+                type="text"
+                value={articleheader}
+                className="editHeader"
+                autoFocus
+                onChange={(e) => setArticleHeader(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label>Article Sub Header</label>
+              <input
+                type="text"
+                value={articlesubheader}
+                className="editSubHeader"
+                autoFocus
+                onChange={(e) => setArticleSubHeader(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Module Nunber</label>
+              <input
+                type="text"
+                value={modulenumber}
+                className="editModuleNumber"
+                autoFocus
+                onChange={(e) => setModuleNumber(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label>Post Title</label>
+              <input
+                type="text"
+                value={title}
+                className="editTitle"
+                autoFocus
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            
+          </div>
         ) : (
           <h1 className="singlePostTitle">
             {title}
