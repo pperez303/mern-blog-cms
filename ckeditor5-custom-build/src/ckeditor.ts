@@ -17,6 +17,7 @@ import { FontBackgroundColor, FontColor, FontFamily, FontSize } from '@ckeditor/
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { HtmlEmbed } from '@ckeditor/ckeditor5-html-embed';
 import { HtmlComment } from '@ckeditor/ckeditor5-html-support';
+import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import {
 	Image,
 	ImageCaption,
@@ -40,6 +41,7 @@ import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 
 class Editor extends ClassicEditor {
 	public static override builtinPlugins = [
+		Alignment,
 		AutoLink,
 		Autoformat,
 		BlockQuote,
@@ -88,6 +90,7 @@ class Editor extends ClassicEditor {
 				'bold',
 				'italic',
 				'underline',
+				'alignment',
 				'fontFamily',
 				'fontSize',
 				'fontColor',

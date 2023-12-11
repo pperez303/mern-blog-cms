@@ -15,6 +15,8 @@ import "./content-styles.css";
 //import "@ckeditor/ckeditor5-theme-lark"
 //import {Animation1} from "../../../assets/animations/animation1/Animation1";
 
+
+
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[3];                   // select the post id value 
@@ -54,8 +56,7 @@ export default function SinglePost() {
   
       setPostBody(res.data.postbody)
 
-      setPhoto(res.data.photo)
-
+      setPhoto(res.data.photo)      
     };
     getPost();
   }, [path]);
@@ -268,7 +269,7 @@ export default function SinglePost() {
         ) : (
           //<p className="singlePostBody">{postbody}</p>
          <div className="ck-content">                                           {/** applies to the contetn-styles.css */}
-            <br />
+           <br />
             {parse(postbody)}  
           </div>
         )}

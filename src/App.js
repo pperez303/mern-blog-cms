@@ -13,12 +13,15 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import SinglePostView from "./pages/single_post_view/SinglePostView";
 import Write from "./pages/write/Write";
+
+
 //dotenv.config();  
 
 function App() {
   console.log("PROXY = ", process.env.REACT_APP_PROXY)
   const { user } = useContext(Context);
   //console.log('App.js user: ', user)
+    
   
   return (
     <Router>
